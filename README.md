@@ -1,42 +1,46 @@
-# **FE-DEV-IPSILON**
-## Recruitment task for GL candidates
+# Getting Started with Create React App
 
-<br/><br/>
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## DESCRIPTION
-Create **SPA** (Single Page Application) to present current statistics of COVID-19.
-App features:
-1. summary statistics for all available countries - presented as interactive map, chart or data table with information about:
-  - number of getting sick
-  - number of convalescents
-  - number of deaths
-2. List of available countries.
-3. Country search.
-4. Select country:
-  - show using timeline:
-    - number of getting sick
-    - number of convalescents
-    - number of deaths
+## Available Scripts
 
+In the project directory, you can run:
 
-## REQUIREMENTS
-1. React.js ( you can use CRA if you want to )
-2. Data delivery - REST API => https://api.covid19api.com/summary
+### `npm start`
 
-## HINTS / RECOMMENDATIONS
-1. Use some state manager
-2. Use lint and prettier to improve code style integrity
-3. Use AXIOS as HTTP client
-4. Be sure your app is free of bugs
-5. Write tests
-6. Create README file with instruction on how to get your app started
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## REGISTRATION
-1. Share your source code using Github https://github.com/goodylabs/FE-dev-ipsilon :
-   - clone existing empty repository
-   - create your own branch, choose a name that will allow us to connect with you
-   - create new **Pull Request**
-2. Build your app and host it with some free cloud host (eg. https://www.netlify.com/, https://firebase.google.com/)
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
----
-# GOOD LUCK :)
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
