@@ -3,7 +3,6 @@ import { Country, CountryDataByDay, GlobalData, SummaryCountryData } from '../mo
 
 export interface SummaryDataResponse {
     ID: string
-    Message: string
     Global: GlobalData
     Countries: SummaryCountryData[]
     Date: string

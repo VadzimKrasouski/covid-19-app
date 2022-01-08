@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SummaryDataResponse } from '../../API/covidAPI';
 import { GlobalData, SummaryCountryData } from '../../models/ICovidData';
+import { fetchSummaryData } from './ActionCreators';
 
 interface SummaryState {
     globalData: GlobalData
@@ -37,6 +38,21 @@ export const summarySlice = createSlice({
             state.countries = action.payload.Countries
         },
         dataFetchingError(state, action: PayloadAction<string>) {
+            state.isLoading = false
+            state.error = action.payload
+        },
+    },
+    extraReducers: {
+        [fetchSummaryData.fulfilled.type]: (state, action: PayloadAction<SummaryDataResponse>) => {
+            state.isLoading = false
+            state.error = ''
+            state.globalData = action.payload.Global
+            state.countries = action.payload.Countries
+        },
+        [fetchSummaryData.pending.type]: (state, action: PayloadAction<SummaryDataResponse>) => {
+            state.isLoading = true
+        },
+        [fetchSummaryData.rejected.type]: (state, action: PayloadAction<string>) => {
             state.isLoading = false
             state.error = action.payload
         },

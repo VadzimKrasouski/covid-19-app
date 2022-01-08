@@ -22,7 +22,7 @@ interface ICountryCoords {
 const Maps = React.memo(({countriesData}: IMapsProps) => {
     const [coords, setCoords] = useState<ICountryCoords[]>([])
     const [countriesCoords, setCountriesCoords] = useState<ICountryCoords[]>([])
-    const [countryData, setCountryData] = useState<SummaryCountryData>();
+    const [countryData, setCountryData] = useState<SummaryCountryData | string>('loading');
 
     const fetchCountriesCoords = async () => {
         fetch('countries.json')
@@ -34,7 +34,11 @@ const Maps = React.memo(({countriesData}: IMapsProps) => {
 
     const findCountryData = (countryCode: string) => {
         let data = countriesData.find(country => country.CountryCode === countryCode)
-        if (data) setCountryData(data)
+        if (data) {
+            setCountryData(data)
+        } else {
+            setCountryData('Data not found')
+        }
     }
 
     useEffect(() => {
@@ -52,6 +56,7 @@ const Maps = React.memo(({countriesData}: IMapsProps) => {
             defaultCenter={POLAND_CENTER}
             margin={[30, 30, 30, 30]}
             options={{disableDefaultUI: true, zoomControl: true, styles: mapStyles}}
+
         >
             {coords.length && coords.map(country => {
                 const markerProps = {
