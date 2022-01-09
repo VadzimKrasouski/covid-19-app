@@ -37,6 +37,11 @@ const Country = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
+  :hover {
+    border: 5px solid black;
+    cursor: pointer;
+  }
 `;
 
 const CountryInfo = styled.div`
