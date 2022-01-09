@@ -1,23 +1,34 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { covidAPI } from '../../API/covidAPI';
 
-/*export const  fetchSummaryData = () => async (dispatch: AppDispatch) => {
-    try {
-        dispatch(summarySlice.actions.dataFetching())
-        const response = await covidAPI.getSummaryData()
-        dispatch(summarySlice.actions.dataFetchingSccess(response.data))
-    } catch (e) {
-        let message = 'Unknown Error'
-        if (e instanceof Error) message = e.message
-        dispatch(summarySlice.actions.dataFetchingError(message))
-    }
-}*/
 
 export const  fetchSummaryData = createAsyncThunk(
-    'fetchSummary',
+    'summaryData',
     async(_, thunkAPI) => {
         try {
             const response = await covidAPI.getSummaryData()
+            return response.data
+        } catch (e) {
+            return thunkAPI.rejectWithValue('Something went wrong')
+        }
+    }
+)
+export const  fetchCountryDetailedData = createAsyncThunk(
+    'country/detailedData',
+    async(country:string, thunkAPI) => {
+        try {
+            const response = await covidAPI.getCountryData(country)
+            return response.data
+        } catch (e) {
+            return thunkAPI.rejectWithValue('Something went wrong')
+        }
+    }
+)
+export const  fetchCountries = createAsyncThunk(
+    'country/detailedData',
+    async(_, thunkAPI) => {
+        try {
+            const response = await covidAPI.getCountries()
             return response.data
         } catch (e) {
             return thunkAPI.rejectWithValue('Something went wrong')

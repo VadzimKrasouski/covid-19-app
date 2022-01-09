@@ -1,18 +1,18 @@
 import axios from 'axios'
-import { Country, CountryDataByDay, GlobalData, SummaryCountryData } from '../models/ICovidData'
+import { ICountry, ICountryDetailedData, IGlobalData, ISummaryCountryData } from '../models/ICovidData'
 
-export interface SummaryDataResponse {
+export interface ISummaryDataResponse {
     ID: string
-    Global: GlobalData
-    Countries: SummaryCountryData[]
+    Global: IGlobalData
+    Countries: ISummaryCountryData[]
     Date: string
     error: string
 }
-interface CountriesResponse {
-    data: Country[]
+interface ICountriesResponse {
+    data: ICountry[]
 }
-interface CountryDataResponse {
-    data: CountryDataByDay[]
+export interface ICountryDetailedDataResponse {
+    data: ICountryDetailedData[]
 }
 
 const instance = axios.create({
@@ -21,12 +21,12 @@ const instance = axios.create({
 
 export const covidAPI = {
     getSummaryData() {
-        return instance.get<SummaryDataResponse>('/summary')
+        return instance.get<ISummaryDataResponse>('/summary')
     },
     getCountries() {
-        return instance.get<CountriesResponse>('/countries')
+        return instance.get<ICountriesResponse>('/countries')
     },
     getCountryData(country: string) {
-        return instance.get(`/country/${country}`)
+        return instance.get<ICountryDetailedDataResponse>(`/country/${country}`)
     }
 }

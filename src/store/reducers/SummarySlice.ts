@@ -1,16 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { SummaryDataResponse } from '../../API/covidAPI';
-import { GlobalData, SummaryCountryData } from '../../models/ICovidData';
+import { ISummaryDataResponse } from '../../API/covidAPI';
+import { IGlobalData, ISummaryCountryData } from '../../models/ICovidData';
 import { fetchSummaryData } from './ActionCreators';
 
-interface SummaryState {
-    globalData: GlobalData
-    countries: SummaryCountryData[]
+interface ISummaryState {
+    globalData: IGlobalData
+    countries: ISummaryCountryData[]
     isLoading: boolean
     error: string
+    show: boolean
+    data: string
 }
 
-const initialState: SummaryState = {
+const initialState: ISummaryState = {
     globalData: {
         NewConfirmed: 0,
         NewDeaths: 0,
@@ -20,36 +22,29 @@ const initialState: SummaryState = {
         TotalRecovered: 0
     },
     countries: [],
+    data: '',
     isLoading: true,
-    error: ''
+    error: '',
+    show: false
 }
 
 export const summarySlice = createSlice({
     name: 'summaryData',
     initialState,
     reducers: {
-        dataFetching(state) {
-            state.isLoading = true
-        },
-        dataFetchingSccess(state, action: PayloadAction<SummaryDataResponse>) {
-            state.isLoading = false
-            state.error = ''
-            state.globalData = action.payload.Global
-            state.countries = action.payload.Countries
-        },
-        dataFetchingError(state, action: PayloadAction<string>) {
-            state.isLoading = false
-            state.error = action.payload
-        },
+       /*addCoords(state, action) {
+        state.countries[action.payload.]
+       }*/
     },
     extraReducers: {
-        [fetchSummaryData.fulfilled.type]: (state, action: PayloadAction<SummaryDataResponse>) => {
+        [fetchSummaryData.fulfilled.type]: (state, action: PayloadAction<ISummaryDataResponse>) => {
             state.isLoading = false
             state.error = ''
             state.globalData = action.payload.Global
             state.countries = action.payload.Countries
+            state.data= action.payload.Date
         },
-        [fetchSummaryData.pending.type]: (state, action: PayloadAction<SummaryDataResponse>) => {
+        [fetchSummaryData.pending.type]: (state) => {
             state.isLoading = true
         },
         [fetchSummaryData.rejected.type]: (state, action: PayloadAction<string>) => {

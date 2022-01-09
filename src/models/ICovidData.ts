@@ -1,4 +1,4 @@
-export interface GlobalData {
+export interface IGlobalData {
     NewConfirmed: number
     TotalConfirmed: number
     NewDeaths: number
@@ -7,13 +7,13 @@ export interface GlobalData {
     TotalRecovered: number
 }
 
-export interface Country {
+export interface ICountry {
     Country: string
     Slug: string
     ISO2: string
 }
 
-export interface SummaryCountryData {
+export interface ISummaryCountryData {
     ID: string
     Country: string
     CountryCode: string
@@ -27,7 +27,7 @@ export interface SummaryCountryData {
     Date: string
 }
 
-export interface CountryDataByDay {
+export interface ICountryDetailedData {
     ID: string
     Country: string
     CountryCode: string
@@ -41,4 +41,11 @@ export interface CountryDataByDay {
     Recovered: number
     Active: number
     Date: string
+}
+
+export interface ICountryWithCoords {
+    country: string
+    alpha2: string
+    latitude: number
+    longitude: number
 }
