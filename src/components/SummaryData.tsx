@@ -14,7 +14,7 @@ const GlobalData = styled.div`
 `;
 
 const Title = styled.div`
-
+padding: 2px;
 `;
 
 const TotalStat = styled.div`
@@ -29,14 +29,21 @@ const ListCountries = styled.div`
 `;
 
 const Country = styled.div`
+  min-width: 360px;
   width: 40%;
   border: 2px solid black;
   margin: 0.5rem;
   padding: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const CountryInfo = styled.div`
   display: flex;
+  > * {
+    padding: 2px;
+  }
   
 `
 
@@ -61,7 +68,7 @@ const SummaryData = () => {
             </GlobalData>
             <ListCountries>
                 {countries.map((country) =>
-                    (<Country>
+                    (<Country key={country.ID}>
                         <Title>
                             {country.Country}
                         </Title>
