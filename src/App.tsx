@@ -1,7 +1,7 @@
 import React from 'react'
 import MapInfoWindow from './components/Map/MapInfoWindow';
 import styled from 'styled-components';
-import SummaryData from './components/SummaryData';
+import SummaryData from './components/Summary/SummaryData';
 
 const Wrapper = styled.main`
   min-height: 100vh;

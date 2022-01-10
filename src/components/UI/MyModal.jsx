@@ -20,7 +20,6 @@ const ModalContent = styled.div`
   align-items: center;
   padding: 25px;
   background: white;
-  border-radius: 16px;
   min-width: 250px;
 `
 const MyModal = ({children, visible, setVisible}) => {
