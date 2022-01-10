@@ -1,10 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { covidAPI } from '../../API/covidAPI';
 
-
-export const  fetchSummaryData = createAsyncThunk(
+export const fetchSummaryData = createAsyncThunk(
     'summaryData',
-    async(_, thunkAPI) => {
+    async (_, thunkAPI) => {
         try {
             const response = await covidAPI.getSummaryData()
             return response.data
@@ -13,9 +12,9 @@ export const  fetchSummaryData = createAsyncThunk(
         }
     }
 )
-export const  fetchCountryDetailedData = createAsyncThunk(
+export const fetchCountryDetailedData = createAsyncThunk(
     'country/detailedData',
-    async(country:string, thunkAPI) => {
+    async (country: string, thunkAPI) => {
         try {
             const response = await covidAPI.getCountryData(country)
             return response.data
@@ -24,9 +23,9 @@ export const  fetchCountryDetailedData = createAsyncThunk(
         }
     }
 )
-export const  fetchCountries = createAsyncThunk(
+export const fetchCountries = createAsyncThunk(
     'country/detailedData',
-    async(_, thunkAPI) => {
+    async (_, thunkAPI) => {
         try {
             const response = await covidAPI.getCountries()
             return response.data
@@ -35,3 +34,4 @@ export const  fetchCountries = createAsyncThunk(
         }
     }
 )
+ 

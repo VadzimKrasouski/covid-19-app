@@ -34,7 +34,9 @@ export const summarySlice = createSlice({
     name: 'summaryData',
     initialState,
     reducers: {
-
+        setCountryName(state, action: PayloadAction<string>) {
+            state.searchCountry = action.payload
+        },
     },
     extraReducers: {
         [fetchSummaryData.fulfilled.type]: (state, action: PayloadAction<ISummaryDataResponse>) => {
@@ -42,7 +44,7 @@ export const summarySlice = createSlice({
             state.error = ''
             state.globalData = action.payload.Global
             state.countries = action.payload.Countries
-            state.date= action.payload.Date
+            state.date = action.payload.Date
         },
         [fetchSummaryData.pending.type]: (state) => {
             state.isLoading = true
@@ -54,5 +56,5 @@ export const summarySlice = createSlice({
     }
 })
 
-// export const {setCountryName} = summarySlice.actions
+export const {setCountryName} = summarySlice.actions
 export default summarySlice.reducer

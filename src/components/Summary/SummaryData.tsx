@@ -1,9 +1,10 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchSummaryData } from '../../store/reducers/ActionCreators';
 import styled from 'styled-components';
 import ListCountries from './ListCountries';
 import { IGlobalData } from '../../models/ICovidData';
+import { setCountryName } from '../../store/reducers/SummarySlice';
 
 const Wrapper = styled.div`
   margin: 0 2rem;
@@ -62,14 +63,14 @@ const SummaryData = () => {
         isLoading,
         error,
         date,
+        searchCountry
     } = useAppSelector(state => state.summaryDataReducer)
-    const [valueInput, setValueInput] = useState('');
     useEffect(() => {
         dispatch(fetchSummaryData())
     }, [dispatch])
 
     const onChangeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setValueInput(e.currentTarget.value)
+        dispatch(setCountryName(e.currentTarget.value))
     }
 
     return (
@@ -85,10 +86,10 @@ const SummaryData = () => {
                 <SearchTitle>
                     Search your country
                 </SearchTitle>
-                <Input placeholder={'Country...'} value={valueInput} onChange={onChangeInputHandler}/>
+                <Input placeholder={'Country...'} value={searchCountry} onChange={onChangeInputHandler}/>
             </SearchCountry>
-            <ListCountries isLoading={isLoading} error={error} countries={countries.filter(country =>
-                country.Country.toLowerCase().startsWith(valueInput.toLowerCase()))}/>
+            {!isLoading && countries.length !== 0 && <ListCountries countries={countries.filter(country =>
+                country.Country.toLowerCase().startsWith(searchCountry.toLowerCase()))}/>}
         </Wrapper>
     )
 }

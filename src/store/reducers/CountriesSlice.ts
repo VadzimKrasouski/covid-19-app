@@ -17,8 +17,7 @@ const initialState: ICountryState = {
 export const countriesSlice = createSlice({
     name: 'countryData',
     initialState,
-    reducers: {
-    },
+    reducers: {},
     extraReducers: {
         [fetchSummaryData.fulfilled.type]: (state, action: PayloadAction<ICountry[]>) => {
             state.isLoading = false

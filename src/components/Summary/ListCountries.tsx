@@ -2,14 +2,9 @@ import MyModal from '../UI/MyModal';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ISummaryCountryData } from '../../models/ICovidData';
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchCountryDetailedData } from '../../store/reducers/ActionCreators';
-
-interface IProps {
-    countries: ISummaryCountryData[]
-    isLoading: boolean
-    error: string | undefined
-}
+import Charts from '../Charts';
 
 const Wrapper = styled.div`
   display: flex;
@@ -47,26 +42,33 @@ const CountryInfo = styled.div`
   }
 `;
 
-const ListCountries = ({countries, isLoading, error}: IProps) => {
+interface IProps {
+    countries: ISummaryCountryData[]
+}
+
+const ListCountries = React.memo(({countries}: IProps) => {
     const dispatch = useAppDispatch()
     const [modal, setModal] = useState(false);
-    const [value, setValue] = useState<string | undefined> ();
+    const [countryName, setCountryName] = useState<string>();
+    const {isLoading, countryData} = useAppSelector(state =>
+        state.countryDetailedDataReducer)
 
     useEffect(() => {
-        if (value) {
+        if (countryName != null) {
             setModal(true)
-            dispatch(fetchCountryDetailedData(value))
+            dispatch(fetchCountryDetailedData(countryName))
         }
-    },[value, dispatch])
+    }, [countryName, dispatch])
+
     return (
         <Wrapper>
             <MyModal visible={modal} setVisible={setModal}>
-                {isLoading && <h1>LOADING...</h1>}
-                {error && <h1>ERRORR!!!!</h1>}
+                {isLoading && <h1>Loading...</h1>}
+                {!isLoading && <Charts countryData={countryData}/>}
             </MyModal>
-            {!isLoading && countries.length !== 0 && countries.map((country) =>
+            {countries.map((country) =>
                 (
-                    <Country key={country.ID} onClick={() => setValue(country.Country)}>
+                    <Country key={country.ID} onClick={() => setCountryName(country.Country)}>
                         <Title>
                             {country.Country}
                         </Title>
@@ -80,6 +82,6 @@ const ListCountries = ({countries, isLoading, error}: IProps) => {
             )}
         </Wrapper>
     )
-}
+})
 
 export default ListCountries

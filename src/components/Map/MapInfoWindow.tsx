@@ -8,7 +8,7 @@ import { ISummaryCountryData } from '../../models/ICovidData';
 const Wrapper = styled.main`
   width: 100%;
   height: 100%;
-  
+
 `;
 
 /*interface IMapsProps {
@@ -43,11 +43,11 @@ const MapInfoWindow = React.memo(() => {
         fetchCountriesCoords();
     }, [])
 
-    const onChildMouseEnterHandler = (key: any, isLoading:boolean) => {
-        if(isLoading)
-        setCountriesOnMap(prevState => {
-            return prevState.map(country => country.alpha2 === key ? {...country, show: true} : country)
-        })
+    const onChildMouseEnterHandler = (key: any, isLoading: boolean) => {
+        if (isLoading)
+            setCountriesOnMap(prevState => {
+                return prevState.map(country => country.alpha2 === key ? {...country, show: true} : country)
+            })
         setCountryData(countries.find(country => country.CountryCode === key))
     }
 

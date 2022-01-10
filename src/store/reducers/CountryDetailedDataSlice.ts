@@ -3,14 +3,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICountryDetailedData } from '../../models/ICovidData';
 
 interface ICountryDetailedDataState {
-    countryClicked: string | undefined
     countryData: ICountryDetailedData[]
     isLoading: boolean
     error: string
 }
 
 const initialState: ICountryDetailedDataState = {
-    countryClicked: undefined,
     countryData: [],
     isLoading: true,
     error: ''
@@ -19,16 +17,12 @@ const initialState: ICountryDetailedDataState = {
 export const countryDataSlice = createSlice({
     name: 'countryDetailedData',
     initialState,
-    reducers: {
-        setCountryName(state, action: PayloadAction<string>) {
-            state.countryClicked = action.payload
-        }
-    },
+    reducers: {},
     extraReducers: {
         [fetchCountryDetailedData.fulfilled.type]: (state, action: PayloadAction<ICountryDetailedData[]>) => {
             state.isLoading = false
             state.error = ''
-            state.countryData = action.payload
+            state.countryData = action.payload.map((day) => ({...day, Date: day.Date.slice(0, -10)}))
         },
         [fetchCountryDetailedData.pending.type]: (state) => {
             state.isLoading = true

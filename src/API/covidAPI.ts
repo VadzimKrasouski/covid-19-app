@@ -8,9 +8,11 @@ export interface ISummaryDataResponse {
     Date: string
     error: string
 }
+
 interface ICountriesResponse {
     data: ICountry[]
 }
+
 export interface ICountryDetailedDataResponse {
     data: ICountryDetailedData[]
 }

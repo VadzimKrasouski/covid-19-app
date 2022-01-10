@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   right: 0;
   left: 0;
   display: ${props => props.visible ? 'flex' : 'none'};
-  background: rgba(0,0,0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 11;
 `;
 
@@ -19,8 +19,10 @@ const ModalContent = styled.div`
   justify-content: center;
   align-items: center;
   padding: 25px;
-  background: white;
-  min-width: 250px;
+  background: #4d6059;
+  min-width: 500px;
+  min-height: 400px;
+  height: 100px;
 `
 const MyModal = ({children, visible, setVisible}) => {
     return (

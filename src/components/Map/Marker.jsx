@@ -20,8 +20,6 @@ const MarkerStyle = styled.div`
   }
 `;
 
-
-
 export const Marker = React.memo(({show, country, countryData}) => {
     return (
         <MarkerStyle>
