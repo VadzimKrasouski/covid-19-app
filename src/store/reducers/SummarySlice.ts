@@ -56,5 +56,5 @@ export const summarySlice = createSlice({
     }
 })
 
-export const {setCountryName} = summarySlice.actions
+// export const {setCountryName} = summarySlice.actions
 export default summarySlice.reducer
