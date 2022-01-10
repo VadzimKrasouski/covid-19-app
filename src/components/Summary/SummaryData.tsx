@@ -56,7 +56,6 @@ const SummaryData = () => {
         isLoading,
         error,
         date,
-        searchCountry
     } = useAppSelector(state => state.summaryDataReducer)
     const [valueInput, setValueInput] = useState('');
     useEffect(() => {
