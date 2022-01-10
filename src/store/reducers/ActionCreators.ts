@@ -9,7 +9,7 @@ export const  fetchSummaryData = createAsyncThunk(
             const response = await covidAPI.getSummaryData()
             return response.data
         } catch (e) {
-            return thunkAPI.rejectWithValue('Something went wrong')
+            return thunkAPI.rejectWithValue('Something went wrong...')
         }
     }
 )
@@ -20,7 +20,7 @@ export const  fetchCountryDetailedData = createAsyncThunk(
             const response = await covidAPI.getCountryData(country)
             return response.data
         } catch (e) {
-            return thunkAPI.rejectWithValue('Something went wrong')
+            return thunkAPI.rejectWithValue('Something went wrong...')
         }
     }
 )

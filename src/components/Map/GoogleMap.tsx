@@ -8,7 +8,6 @@ const Wrapper = styled.main`
   height: 100%;
 `;
 
-
 export const GoogleMap = ({children = null, ...props}: any) => {
     return (
         <Wrapper>

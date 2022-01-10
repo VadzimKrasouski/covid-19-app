@@ -34,9 +34,7 @@ export const summarySlice = createSlice({
     name: 'summaryData',
     initialState,
     reducers: {
-       setCountryName(state, action: PayloadAction<string>) {
-        state.searchCountry = action.payload
-       }
+
     },
     extraReducers: {
         [fetchSummaryData.fulfilled.type]: (state, action: PayloadAction<ISummaryDataResponse>) => {

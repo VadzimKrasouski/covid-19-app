@@ -6,7 +6,6 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
 `;
-
 const Title = styled.h2`
   color: #fff;
   min-width: 120px;
@@ -20,7 +19,6 @@ const Info = styled.div`
   padding: 4px;
   z-index: 5;
 `;
-
 const TotalConfirmed = styled.div`
   color: blue;
 `;
@@ -33,8 +31,7 @@ interface IProps {
     countryData: ISummaryCountryData
 }
 
-export const InfoWindow = ({title, countryData}:IProps) => {
-    console.log(countryData)
+export const InfoWindow = ({title, countryData}: IProps) => {
     return (
         <Wrapper>
             <Title>{title}</Title>

@@ -38,7 +38,6 @@ const RightSide = styled.div`
     min-height: 50vh;
   }
 `;
-
 const Map = styled.div`
   position: fixed;
   height: 100vh;
