@@ -2,7 +2,7 @@ import MyModal from '../UI/MyModal';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ISummaryCountryData } from '../../models/ICovidData';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { useAppDispatch } from '../../hooks/redux';
 import { fetchCountryDetailedData } from '../../store/reducers/ActionCreators';
 
 interface IProps {
@@ -51,15 +51,13 @@ const ListCountries = ({countries, isLoading, error}: IProps) => {
     const dispatch = useAppDispatch()
     const [modal, setModal] = useState(false);
     const [value, setValue] = useState<string | undefined> ();
-    const {} = useAppSelector(state =>
-        state.countryDetailedDataReducer)
 
     useEffect(() => {
         if (value) {
             setModal(true)
             dispatch(fetchCountryDetailedData(value))
         }
-    },[value])
+    },[value, dispatch])
     return (
         <Wrapper>
             <MyModal visible={modal} setVisible={setModal}>
