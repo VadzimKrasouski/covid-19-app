@@ -54,12 +54,15 @@ const ListCountries = React.memo(({countries}: IProps) => {
         state.countryDetailedDataReducer)
 
     useEffect(() => {
-        if (countryName != null) {
-            setModal(true)
+        if (modal && countryName != null) {
             dispatch(fetchCountryDetailedData(countryName))
         }
     }, [countryName, dispatch])
 
+const onClickHandler =(country:string) =>{
+        setCountryName(country)
+    setModal(true)
+}
     return (
         <Wrapper>
             <MyModal visible={modal} setVisible={setModal}>
@@ -68,7 +71,7 @@ const ListCountries = React.memo(({countries}: IProps) => {
             </MyModal>
             {countries.map((country) =>
                 (
-                    <Country key={country.ID} onClick={() => setCountryName(country.Country)}>
+                    <Country key={country.ID} onClick={() => onClickHandler(country.Country)}>
                         <Title>
                             {country.Country}
                         </Title>
