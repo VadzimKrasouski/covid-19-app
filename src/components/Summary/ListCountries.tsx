@@ -13,8 +13,8 @@ const Wrapper = styled.div`
   margin: 8px;
 `;
 const Country = styled.div`
-  min-width: 280px;
-  width: 33%;
+  min-width: 240px;
+  width: 45%;
   border: 2px solid #24282b;
   margin: 8px 0;
   padding: 4px;

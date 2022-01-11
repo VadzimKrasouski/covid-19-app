@@ -6,7 +6,6 @@ import SummaryData from './components/Summary/SummaryData';
 const Wrapper = styled.main`
   min-height: 100vh;
   background: #4d6059;
-  overflow: hidden;
 `;
 
 const Home = styled.div`
@@ -20,8 +19,10 @@ const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
-  min-width: 33rem;
+  //min-width: 375px;
   @media only screen and (max-width: 1056px) {
+    margin: 0;
+    padding: 0;
     flex-direction: column;
     width: 100%;
     min-height: 50vh;
@@ -31,8 +32,10 @@ const RightSide = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
-  min-width: 33rem;
+  //min-width: 375px;
   @media only screen and (max-width: 1056px) {
+    margin: 0;
+    padding: 0;
     flex-direction: column;
     width: 100%;
     min-height: 50vh;
