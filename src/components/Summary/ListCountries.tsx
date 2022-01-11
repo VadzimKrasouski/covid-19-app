@@ -57,7 +57,7 @@ const ListCountries = React.memo(({countries}: IProps) => {
         if (modal && countryName != null) {
             dispatch(fetchCountryDetailedData(countryName))
         }
-    }, [countryName, dispatch])
+    }, [countryName, dispatch, modal])
 
 const onClickHandler =(country:string) =>{
         setCountryName(country)
